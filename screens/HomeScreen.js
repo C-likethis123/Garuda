@@ -18,12 +18,14 @@ class HomeScreen extends Component {
     constructor() {
         super();
         this.state = {
-            Name: '',
-            NRIC: '',
-            DOB: '',
-            Address: '',
-            Email: '',
-            Medical: '',
+            Info: {
+                Name: '',
+                KTP: '',
+                DOB: '',
+                Address: '',
+                Email: '',
+                Medical: '',
+            }
         };
     }
 
@@ -33,42 +35,20 @@ class HomeScreen extends Component {
 
     getInfo = async () => {
         try {
-            let name = await AsyncStorage.getItem('Name');
-            let nric = await AsyncStorage.getItem('NRIC')
-            let dob = await AsyncStorage.getItem('DOB')
-            let address = await AsyncStorage.getItem('address')
-            let email = await AsyncStorage.getItem('email')
-            let medical = await AsyncStorage.getItem('medical')
-            if (name !== null) {
-                this.setState({
-                    Name: name
-                });
+            let stored = await AsyncStorage.getItem('Info')
+            if (stored !== null) {
+                this.setState({ 
+                    Info: {
+                        ...this.state.Info,
+                        Name: stored.Name,
+                        KTP: stored.KTP,
+                        DOB: stored.DOB,
+                        Address: stored.Address,
+                        Email: stored.Email,
+                        Medical: stored.Medical,
+                    },
+                }); 
             } 
-            if (nric !== null) {
-                this.setState({
-                    NRIC: nric
-                });
-            }
-            if (dob !== null) {
-                this.setState({
-                    DOB: dob
-                });
-            }
-            if (address !== null) {
-                this.setState({
-                    Address: address
-                });
-            }
-            if (email !== null) {
-                this.setState({
-                    Email: email
-                });
-            }
-            if (medical !== null) {
-                this.setState({
-                    Medical: medical
-                });
-            }
         } catch (error) {
             console.warn('Error in getting Info ' + error);
         }
@@ -79,17 +59,7 @@ class HomeScreen extends Component {
             <View style={styles.container}>
                 <Text>Home Screen </Text>
                 <Text>
-                    {this.state.Name}
-                    {"\n"}
-                    {this.state.NRIC}
-                    {"\n"}
-                    {this.state.DOB}
-                    {"\n"}
-                    {this.state.Address}
-                    {"\n"}
-                    {this.state.Email}
-                    {"\n"}
-                    {this.state.Medical}
+                    {this.state.Info.Name}
                 </Text>
                 <Button
                     type="clear"

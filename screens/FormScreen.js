@@ -19,12 +19,14 @@ class FormScreen extends Component {
         super(props);
         
         this.state = {
-          Name: '',
-          NRIC: '',
-          DOB: '',
-          Address: '',
-          Email: '',
-          Medical: '',
+            Info: {
+                Name: '',
+                KTP: '',
+                DOB: '',
+                Address: '',
+                Email: '',
+                Medical: '',
+            }
         };
     }
 
@@ -34,20 +36,21 @@ class FormScreen extends Component {
 
     saveInfo = async () => {
         try {
-            await AsyncStorage.setItem('Name', this.state.name)
-            await AsyncStorage.setItem('NRIC', this.state.NRIC)
-            await AsyncStorage.setItem('DOB', this.state.DOB)
-            await AsyncStorage.setItem('address', this.state.address)
-            await AsyncStorage.setItem('email', this.state.email)
-            await AsyncStorage.setItem('medical', this.state.medical)
+            Info = 
+            await AsyncStorage.setItem('Info', this.state.Info)
+            // await AsyncStorage.setItem('NRIC', this.state.NRIC)
+            // await AsyncStorage.setItem('DOB', this.state.DOB)
+            // await AsyncStorage.setItem('address', this.state.address)
+            // await AsyncStorage.setItem('email', this.state.email)
+            // await AsyncStorage.setItem('medical', this.state.medical)
         } catch (error) {
             console.warn('Error in getting Info' + error);
         }
     }
 
     onLogin() {
-        const { name, NRIC, DOB, address, email, medical} = this.state;
-    
+        // const { name, NRIC, DOB, address, email, medical} = this.state;
+        const {Info} = this.state;
         this.saveInfo();
         window.location.reload(false);
 
@@ -60,37 +63,55 @@ class FormScreen extends Component {
                 <Text> Form Screen </Text>
                 <TextInput
                 value={this.state.name}
-                onChangeText={(name) => this.setState({ name })}
+                onChangeText={(name) => this.setState({
+                    ...this.state.Info,
+                    Name: name
+                })} 
                 placeholder={'Name'}
                 style={styles.input}
                 />
                 <TextInput
                 value={this.state.NRIC}
-                onChangeText={(NRIC) => this.setState({ NRIC })}
+                onChangeText={(ktp) => this.setState({
+                    ...this.state.Info,
+                    KTP: ktp
+                })}
                 placeholder={'NRIC'}
                 style={styles.input}
                 />
                 <TextInput
                 value={this.state.DOB}
-                onChangeText={(DOB) => this.setState({ DOB })}
+                onChangeText={(dob) => this.setState({
+                    ...this.state.Info,
+                    DOB: dob
+                })}
                 placeholder={'DOB'}
                 style={styles.input}
                 />
                 <TextInput
                 value={this.state.address}
-                onChangeText={(address) => this.setState({ address })}
+                onChangeText={(address) => this.setState({
+                    ...this.state.Info,
+                    Address: address
+                })}
                 placeholder={'address'}
                 style={styles.input}
                 />
                 <TextInput
                 value={this.state.email}
-                onChangeText={(email) => this.setState({ email })}
+                onChangeText={(email) => this.setState({
+                    ...this.state.Info,
+                    Email: email
+                })}
                 placeholder={'email'}
                 style={styles.input}
                 />
                 <TextInput
                 value={this.state.medical}
-                onChangeText={(medical) => this.setState({ medical })}
+                onChangeText={(medical) => this.setState({
+                    ...this.state.Info,
+                    Medical: medical
+                })}
                 placeholder={'Medical History'}
                 style={styles.input}
                 />
