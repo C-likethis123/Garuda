@@ -1,21 +1,43 @@
+import 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import * as React from 'react';
+import {Component} from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>GARUDA START TEST TEST</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+
+import LoginScreen from './screens/LoginScreen';
+import HomeScreen from './screens/HomeScreen';
+import FormScreen from './screens/FormScreen';
+
+const Stack = createStackNavigator();
+
+function MyStack() {
+    return (
+        <Stack.Navigator>
+            <Stack.Screen
+                name="HomeScreen"
+                component={HomeScreen}
+            />
+			<Stack.Screen
+                name="LoginScreen"
+                component={LoginScreen}
+            />
+            <Stack.Screen
+                name="FormScreen"
+                component={FormScreen} />
+        </Stack.Navigator>
+    );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const App = () => {
+  return (
+    <NavigationContainer>
+       <StatusBar barStyle="light-content" backgroundColor="black" />
+       <MyStack />
+    </NavigationContainer>
+  );
+};
+
+export default App;
