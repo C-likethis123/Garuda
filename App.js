@@ -17,16 +17,17 @@ function MyStack() {
     return (
         <Stack.Navigator>
             <Stack.Screen
-                name="HomeScreen"
-                component={HomeScreen}
-            />
-			<Stack.Screen
                 name="LoginScreen"
                 component={LoginScreen}
             />
             <Stack.Screen
+                name="HomeScreen"
+                component={HomeScreen}
+            />
+            <Stack.Screen
                 name="FormScreen"
-                component={FormScreen} />
+                component={FormScreen}
+            />
         </Stack.Navigator>
     );
 }
