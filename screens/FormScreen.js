@@ -46,6 +46,7 @@ class FormScreen extends Component {
         const { name, NRIC, DOB, address, email, medical} = this.state;
     
         this.saveInfo();
+        window.location.reload(false);
 
         this.props.navigation.navigate('HomeScreen');
     }
@@ -66,6 +67,31 @@ class FormScreen extends Component {
                 placeholder={'NRIC'}
                 style={styles.input}
                 />
+                <TextInput
+                value={this.state.DOB}
+                onChangeText={(DOB) => this.setState({ DOB })}
+                placeholder={'DOB'}
+                style={styles.input}
+                />
+                <TextInput
+                value={this.state.address}
+                onChangeText={(address) => this.setState({ address })}
+                placeholder={'address'}
+                style={styles.input}
+                />
+                <TextInput
+                value={this.state.email}
+                onChangeText={(email) => this.setState({ email })}
+                placeholder={'email'}
+                style={styles.input}
+                />
+                <TextInput
+                value={this.state.medical}
+                onChangeText={(medical) => this.setState({ medical })}
+                placeholder={'Medical History'}
+                style={styles.input}
+                />
+                
                 
                 <Button
                     type="clear"
