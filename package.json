@@ -23,7 +23,8 @@
     "react-native-screens": "~2.9.0",
     "react-native-vector-icons": "^7.0.0",
     "react-native-web": "~0.11.7",
-    "react-navigation": "^4.4.0"
+    "react-navigation": "^4.4.0",
+    "expo-sqlite": "~8.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.8.6",

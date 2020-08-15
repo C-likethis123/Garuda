@@ -10,6 +10,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import LoginScreen from './screens/LoginScreen';
 import HomeScreen from './screens/HomeScreen';
 import FormScreen from './screens/FormScreen';
+import PatientsScreen from "./screens/PatientsScreen";
 
 const Stack = createStackNavigator();
 
@@ -27,6 +28,10 @@ function MyStack() {
             <Stack.Screen
                 name="FormScreen"
                 component={FormScreen}
+            />
+            <Stack.Screen
+                name="PatientsScreen"
+                component={PatientsScreen}
             />
         </Stack.Navigator>
     );
