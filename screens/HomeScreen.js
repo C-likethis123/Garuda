@@ -17,15 +17,50 @@ class HomeScreen extends Component {
 
     constructor() {
         super();
-        this.state = {};
+        this.state = {
+            Info: {
+                Name: '',
+                KTP: '',
+                DOB: '',
+                Address: '',
+                Email: '',
+                Medical: '',
+            }
+        };
     }
 
-    componentDidMount() {}
+    componentDidMount() {
+        this.getInfo()
+    }
+
+    getInfo = async () => {
+        try {
+            let stored = await AsyncStorage.getItem('Info')
+            if (stored !== null) {
+                this.setState({ 
+                    Info: {
+                        ...this.state.Info,
+                        Name: stored.Name,
+                        KTP: stored.KTP,
+                        DOB: stored.DOB,
+                        Address: stored.Address,
+                        Email: stored.Email,
+                        Medical: stored.Medical,
+                    },
+                }); 
+            } 
+        } catch (error) {
+            console.warn('Error in getting Info ' + error);
+        }
+    }
 
     render() {
         return (
             <View style={styles.container}>
                 <Text>Home Screen </Text>
+                <Text>
+                    {this.state.Info.Name}
+                </Text>
                 <Button
                     type="clear"
                     style={styles.button}
