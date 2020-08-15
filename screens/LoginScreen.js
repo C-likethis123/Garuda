@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import { Button } from "react-native-elements";
 
-export default class LoginScreen extends Component {
+class LoginScreen extends Component {
     static navigationOptions = ({ navigation }) => ({
         title: LoginScreen
     });
@@ -45,3 +45,5 @@ const styles = StyleSheet.create({
         justifyContent: "center"
     },
 });
+
+export default LoginScreen;
