@@ -17,8 +17,8 @@ Dian Hao
 
 ## Setting up
 1. Download npm from https://nodejs.org/en/download/
-1. Next, we use [Expo](https://expo.io/) to bootstrap our project. `npm install expo-cli --global` to download the expo-cli tool
-2. `git clone <project url>` to clone this repo
-3. `cd Garuda` to go to your project directory
-4. `npm install` to install project dependencies
-5. `expo start --web` to run the dev server
+2. Next, we use [Expo](https://expo.io/) to bootstrap our project. `npm install expo-cli --global` to download the expo-cli tool
+3. `git clone <project url>` to clone this repo
+4. `cd Garuda` to go to your project directory
+5. `npm install` to install project dependencies
+6. `expo start --web` to run the dev server
