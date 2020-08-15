@@ -1,74 +1,43 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-
-import t from 'tcomb-form-native';
-
-const Form = t.form.Form;
-
-const User = t.struct({
-  email: t.String,
-  username: t.maybe(t.String),
-  password: t.String,
-  terms: t.Boolean
-});
-
-const formStyles = {
-  ...Form.stylesheet,
-  formGroup: {
-    normal: {
-      marginBottom: 10
-    },
-  },
-  controlLabel: {
-    normal: {
-      color: 'blue',
-      fontSize: 18,
-      marginBottom: 7,
-      fontWeight: '600'
-    },
-    // the style applied when a validation error occours
-    error: {
-      color: 'red',
-      fontSize: 18,
-      marginBottom: 7,
-      fontWeight: '600'
-    }
-  }
-}
-
-const options = {
-  fields: {
-    email: {
-      error: 'Without an email address how are you going to reset your password when you forget it?'
-    },
-    password: {
-      error: 'Choose something you use on a dozen other sites or something you won\'t remember'
-    },
-    terms: {
-      label: 'Agree to Terms',
-    },
-  },
-  stylesheet: formStyles,
-};
+import React, { Component } from 'react';
+import { Alert, Button, TextInput, View, StyleSheet } from 'react-native';
 
 export default class App extends Component {
-  handleSubmit = () => {
-    const value = this._form.getValue();
-    console.log('value: ', value);
+  constructor(props) {
+    super(props);
+    
+    this.state = {
+      name: '',
+      password: '',
+    };
   }
   
+  onLogin() {
+    const { username, password } = this.state;
+
+    Alert.alert('Credentials', `${username} + ${password}`);
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        <Form 
-          ref={c => this._form = c}
-          type={User} 
-          options={options}
+        <TextInput
+          value={this.state.username}
+          onChangeText={(username) => this.setState({ username })}
+          placeholder={'Username'}
+          style={styles.input}
         />
+        <TextInput
+          value={this.state.password}
+          onChangeText={(password) => this.setState({ password })}
+          placeholder={'Password'}
+          secureTextEntry={true}
+          style={styles.input}
+        />
+        
         <Button
-          title="Sign Up!"
-          onPress={this.handleSubmit}
+          title={'Login'}
+          style={styles.input}
+          onPress={this.onLogin.bind(this)}
         />
       </View>
     );
@@ -77,9 +46,17 @@ export default class App extends Component {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
+    alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 50,
-    padding: 20,
-    backgroundColor: '#ffffff',
+    backgroundColor: '#ecf0f1',
+  },
+  input: {
+    width: 200,
+    height: 44,
+    padding: 10,
+    borderWidth: 1,
+    borderColor: 'black',
+    marginBottom: 10,
   },
 });
