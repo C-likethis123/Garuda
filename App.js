@@ -2,6 +2,8 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
+import t from 'tcomb-form-native';
+
 export default function App() {
   return (
     <View style={styles.container}>
