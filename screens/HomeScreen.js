@@ -17,15 +17,45 @@ class HomeScreen extends Component {
 
     constructor() {
         super();
-        this.state = {};
+        this.state = {
+            name: '',
+            NRIC: ''
+        };
     }
 
-    componentDidMount() {}
+    componentDidMount() {
+        this.getInfo()
+    }
+
+    getInfo = async () => {
+        try {
+            let name = await AsyncStorage.getItem('Name');
+            let nric = await AsyncStorage.getItem('NRIC')
+            if (name !== null) {
+                this.setState({
+                    name: name
+                });
+            } 
+            if (nric !== null) {
+                this.setState({
+                    NRIC:nric
+                });
+            }
+
+        } catch (error) {
+            console.warn('Error in getting Info ' + error);
+        }
+    }
 
     render() {
         return (
             <View style={styles.container}>
                 <Text>Home Screen </Text>
+                <Text>
+                    {this.state.name}
+                    {"\n"}
+                    {this.state.NRIC}
+                </Text>
                 <Button
                     type="clear"
                     style={styles.button}

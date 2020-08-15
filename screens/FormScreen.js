@@ -28,15 +28,27 @@ class FormScreen extends Component {
         };
     }
 
+    componentDidMount() {
+        this.saveInfo();
+    }
+
+    saveInfo = async () => {
+        try {
+            await AsyncStorage.setItem('Name', this.state.name)
+            await AsyncStorage.setItem('NRIC', this.state.NRIC)
+            console.log(this.state.name + this.state.NRIC)
+        } catch (error) {
+            console.warn('Error in getting Info' + error);
+        }
+    }
+
     onLogin() {
         const { name, NRIC, DOB, address, email, medical} = this.state;
     
-        Alert.alert(`${name} + ${NRIC}`);
+        this.saveInfo();
 
-        this.props.navigation.navigate('HomeScreen')
+        this.props.navigation.navigate('HomeScreen');
     }
-
-    componentDidMount() {}
 
     render() {
         return (
