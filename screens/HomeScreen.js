@@ -37,16 +37,9 @@ class HomeScreen extends Component {
         try {
             let stored = await AsyncStorage.getItem('Info')
             if (stored !== null) {
+                
                 this.setState({ 
-                    Info: {
-                        ...this.state.Info,
-                        Name: stored.Name,
-                        KTP: stored.KTP,
-                        DOB: stored.DOB,
-                        Address: stored.Address,
-                        Email: stored.Email,
-                        Medical: stored.Medical,
-                    },
+                    Info: stored,
                 }); 
             } 
         } catch (error) {
@@ -55,6 +48,7 @@ class HomeScreen extends Component {
     }
 
     render() {
+        this.getInfo();
         return (
             <View style={styles.container}>
                 <Text>Home Screen </Text>

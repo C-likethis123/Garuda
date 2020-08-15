@@ -36,7 +36,6 @@ class FormScreen extends Component {
 
     saveInfo = async () => {
         try {
-            Info = 
             await AsyncStorage.setItem('Info', this.state.Info)
             // await AsyncStorage.setItem('NRIC', this.state.NRIC)
             // await AsyncStorage.setItem('DOB', this.state.DOB)
@@ -53,7 +52,6 @@ class FormScreen extends Component {
         const {Info} = this.state;
         this.saveInfo();
         window.location.reload(false);
-
         this.props.navigation.navigate('HomeScreen');
     }
 
@@ -62,7 +60,7 @@ class FormScreen extends Component {
             <View style={styles.container}>
                 <Text> Form Screen </Text>
                 <TextInput
-                value={this.state.name}
+                value={this.state.Info.Name}
                 onChangeText={(name) => this.setState({
                     ...this.state.Info,
                     Name: name
@@ -71,16 +69,16 @@ class FormScreen extends Component {
                 style={styles.input}
                 />
                 <TextInput
-                value={this.state.NRIC}
+                value={this.state.Info.KTP}
                 onChangeText={(ktp) => this.setState({
                     ...this.state.Info,
                     KTP: ktp
                 })}
-                placeholder={'NRIC'}
+                placeholder={'KTP'}
                 style={styles.input}
                 />
                 <TextInput
-                value={this.state.DOB}
+                value={this.state.Info.DOB}
                 onChangeText={(dob) => this.setState({
                     ...this.state.Info,
                     DOB: dob
@@ -89,25 +87,25 @@ class FormScreen extends Component {
                 style={styles.input}
                 />
                 <TextInput
-                value={this.state.address}
+                value={this.state.Info.Address}
                 onChangeText={(address) => this.setState({
                     ...this.state.Info,
                     Address: address
                 })}
-                placeholder={'address'}
+                placeholder={'Address'}
                 style={styles.input}
                 />
                 <TextInput
-                value={this.state.email}
+                value={this.state.Info.Email}
                 onChangeText={(email) => this.setState({
                     ...this.state.Info,
                     Email: email
                 })}
-                placeholder={'email'}
+                placeholder={'Email'}
                 style={styles.input}
                 />
                 <TextInput
-                value={this.state.medical}
+                value={this.state.InfoMedical}
                 onChangeText={(medical) => this.setState({
                     ...this.state.Info,
                     Medical: medical
@@ -115,7 +113,6 @@ class FormScreen extends Component {
                 placeholder={'Medical History'}
                 style={styles.input}
                 />
-                
                 
                 <Button
                     type="clear"
