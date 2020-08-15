@@ -19,8 +19,11 @@ class LoginScreen extends Component {
 
     onLogin() {
         const { username, password } = this.state;
+
+        //Alert.alert('Credentials', `${username} + ${password}`);
+
+        this.props.navigation.navigate('HomeScreen')
     
-        Alert.alert('Credentials', `${username} + ${password}`);
       }
 
     render() {
@@ -45,14 +48,6 @@ class LoginScreen extends Component {
                 title={'Login'}
                 style={styles.input}
                 onPress={this.onLogin.bind(this)}
-                />
-                <Button
-                    type="clear"
-                    style={styles.button}
-                    title="Login"
-                        onPress={() =>
-                            this.props.navigation.navigate('HomeScreen')
-                        }
                 />
             </View>
         );
