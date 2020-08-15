@@ -18,8 +18,12 @@ class HomeScreen extends Component {
     constructor() {
         super();
         this.state = {
-            name: '',
-            NRIC: ''
+            Name: '',
+            NRIC: '',
+            DOB: '',
+            Address: '',
+            Email: '',
+            Medical: '',
         };
     }
 
@@ -31,17 +35,40 @@ class HomeScreen extends Component {
         try {
             let name = await AsyncStorage.getItem('Name');
             let nric = await AsyncStorage.getItem('NRIC')
+            let dob = await AsyncStorage.getItem('DOB')
+            let address = await AsyncStorage.getItem('address')
+            let email = await AsyncStorage.getItem('email')
+            let medical = await AsyncStorage.getItem('medical')
             if (name !== null) {
                 this.setState({
-                    name: name
+                    Name: name
                 });
             } 
             if (nric !== null) {
                 this.setState({
-                    NRIC:nric
+                    NRIC: nric
                 });
             }
-
+            if (dob !== null) {
+                this.setState({
+                    DOB: dob
+                });
+            }
+            if (address !== null) {
+                this.setState({
+                    Address: address
+                });
+            }
+            if (email !== null) {
+                this.setState({
+                    Email: email
+                });
+            }
+            if (medical !== null) {
+                this.setState({
+                    Medical: medical
+                });
+            }
         } catch (error) {
             console.warn('Error in getting Info ' + error);
         }
@@ -52,9 +79,17 @@ class HomeScreen extends Component {
             <View style={styles.container}>
                 <Text>Home Screen </Text>
                 <Text>
-                    {this.state.name}
+                    {this.state.Name}
                     {"\n"}
                     {this.state.NRIC}
+                    {"\n"}
+                    {this.state.DOB}
+                    {"\n"}
+                    {this.state.Address}
+                    {"\n"}
+                    {this.state.Email}
+                    {"\n"}
+                    {this.state.Medical}
                 </Text>
                 <Button
                     type="clear"

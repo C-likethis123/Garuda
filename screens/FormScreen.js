@@ -19,12 +19,12 @@ class FormScreen extends Component {
         super(props);
         
         this.state = {
-          name: '',
+          Name: '',
           NRIC: '',
           DOB: '',
-          address: '',
-          email: '',
-          medical: '',
+          Address: '',
+          Email: '',
+          Medical: '',
         };
     }
 
@@ -36,7 +36,10 @@ class FormScreen extends Component {
         try {
             await AsyncStorage.setItem('Name', this.state.name)
             await AsyncStorage.setItem('NRIC', this.state.NRIC)
-            console.log(this.state.name + this.state.NRIC)
+            await AsyncStorage.setItem('DOB', this.state.DOB)
+            await AsyncStorage.setItem('address', this.state.address)
+            await AsyncStorage.setItem('email', this.state.email)
+            await AsyncStorage.setItem('medical', this.state.medical)
         } catch (error) {
             console.warn('Error in getting Info' + error);
         }
