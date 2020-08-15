@@ -2,7 +2,7 @@
 
 ## Project
 <!-- Include UI image here-->
-A centralised database which stores patient's health histories, for doctors to have a better overview of a patient's health.
+A centralised database which stores patient's health histories, for doctors and healthcare personnel to have a better overview of a patient's health.
 
 Tech stack:
 - React Native, bootstrapped with Expo
@@ -16,8 +16,8 @@ Jia Ying
 Dian Hao
 
 ## Setting up
-
-1. `npm install expo-cli --global` to download the expo-cli tool
+1. Download npm from https://nodejs.org/en/download/
+1. Next, we use [Expo](https://expo.io/) to bootstrap our project. `npm install expo-cli --global` to download the expo-cli tool
 2. `git clone <project url>` to clone this repo
 3. `cd Garuda` to go to your project directory
 4. `npm install` to install project dependencies
