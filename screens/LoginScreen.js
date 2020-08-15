@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Alert, Button, TextInput, View, StyleSheet } from 'react-native';
+import { Alert, Button, Text, TextInput, View, StyleSheet } from 'react-native';
 
 class LoginScreen extends Component {
     static navigationOptions = ({ navigation }) => ({
