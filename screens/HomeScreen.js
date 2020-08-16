@@ -12,7 +12,7 @@ import { Button } from "react-native-elements";
 
 class HomeScreen extends Component {
     static navigationOptions = ({ navigation }) => ({
-        title: HomeScreen
+        title: Home
     });
 
     constructor() {
@@ -57,7 +57,7 @@ class HomeScreen extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text>Home Screen </Text>
+                <Text style={styles.title}>Welcome to HealthRecords</Text>
                 <Text>
                     {this.state.Info.Name}
                 </Text>
@@ -66,7 +66,7 @@ class HomeScreen extends Component {
                     style={styles.button}
                     title="Go to Form"
                         onPress={() =>
-                            this.props.navigation.navigate('FormScreen')
+                            this.props.navigation.navigate('Form')
                         }
                 />
             </View>
@@ -79,7 +79,15 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
+        backgroundColor: '#f0f8ff',
     },
+    title: {
+        fontSize: 40,
+        fontWeight: 'bold',
+        fontFamily: 'Helvetica-Bold',
+        color: '#0f4c75',
+        margin: 50,
+    }
 });
 
 export default HomeScreen;
