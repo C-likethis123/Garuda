@@ -133,10 +133,10 @@ class FormScreen extends Component {
 
 const styles = StyleSheet.create({
     container: {
-      flex: 1,
-      alignItems: 'center',
-      justifyContent: 'center',
-      backgroundColor: '#f0f8ff',
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#f0f8ff',
     },
     input: {
 		width: 250,
