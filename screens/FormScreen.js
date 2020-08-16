@@ -12,7 +12,7 @@ import { Button } from "react-native-elements";
 
 class FormScreen extends Component {
     static navigationOptions = ({ navigation }) => ({
-        title: FormScreen
+        title: Form
     });
 
     constructor(props) {
@@ -53,14 +53,13 @@ class FormScreen extends Component {
         const {Info} = this.state;
         this.saveInfo();
         window.location.reload(false);
-
-        this.props.navigation.navigate('HomeScreen');
+        this.props.navigation.goBack(null);
     }
 
     render() {
         return (
             <View style={styles.container}>
-                <Text> Form Screen </Text>
+                <Text style={styles.title}> Patient Record </Text>
                 <TextInput
                 value={this.state.name}
                 onChangeText={(name) => this.setState({
@@ -94,7 +93,7 @@ class FormScreen extends Component {
                     ...this.state.Info,
                     Address: address
                 })}
-                placeholder={'address'}
+                placeholder={'Address'}
                 style={styles.input}
                 />
                 <TextInput
@@ -103,24 +102,25 @@ class FormScreen extends Component {
                     ...this.state.Info,
                     Email: email
                 })}
-                placeholder={'email'}
+                placeholder={'Email'}
                 style={styles.input}
                 />
                 <TextInput
                 value={this.state.medical}
+                multiline={true}
                 onChangeText={(medical) => this.setState({
                     ...this.state.Info,
                     Medical: medical
                 })}
                 placeholder={'Medical History'}
-                style={styles.input}
+                style={styles.longInput}
                 />
                 
                 
                 <Button
                     type="clear"
                     style={styles.button}
-                    title="Submit Form"
+                    title="Submit"
                         onPress={() =>
                             this.onLogin()
                         }
@@ -136,16 +136,39 @@ const styles = StyleSheet.create({
       flex: 1,
       alignItems: 'center',
       justifyContent: 'center',
-      backgroundColor: '#ecf0f1',
+      backgroundColor: '#f0f8ff',
     },
     input: {
-      width: 200,
-      height: 44,
-      padding: 10,
-      borderWidth: 1,
-      borderColor: 'black',
-      marginBottom: 10,
+		width: 250,
+		color: '#555555',
+        padding: 10,
+        margin: 10,
+        height: 50,
+        borderColor: '#6E5BAA',
+        borderWidth: 1,
+        borderRadius: 10,
+        alignSelf: 'center',
+        backgroundColor: '#ffffff'
     },
+    longInput: {
+		width: 250,
+		color: '#555555',
+        padding: 10,
+        margin: 10,
+        height: 150,
+        borderColor: '#6E5BAA',
+        borderWidth: 1,
+        borderRadius: 10,
+        alignSelf: 'center',
+        backgroundColor: '#ffffff'
+    },
+    title: {
+        fontSize: 30,
+        fontWeight: 'bold',
+        fontFamily: 'Helvetica-Bold',
+        color: '#0f4c75',
+        margin: 10,
+    }
   });
   
 
