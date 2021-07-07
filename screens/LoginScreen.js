@@ -54,6 +54,13 @@ class LoginScreen extends Component {
                             this.props.navigation.navigate('HomeScreen')
                         }
                 />
+                <Button type="clear"
+                        style="styles.button"
+                        title="Db"
+                        onPress={() => {
+                            this.props.navigation.navigate('PatientsScreen')
+                        }}
+                />
             </View>
         );
     }
